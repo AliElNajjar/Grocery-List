@@ -11,9 +11,12 @@ public class ProductBehavior : MonoBehaviour
     private string productName;
     private ProductCollector productCollector;
 
+    public string ProductName => productName;
+
     private void Awake()
     {
-        productName = product.text;
+        productName = gameObject.name;
+        product.text = productName;
         productCollector = AppManager.Instance.ProductCollector;
     }
 
