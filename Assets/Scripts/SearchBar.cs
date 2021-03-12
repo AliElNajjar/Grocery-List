@@ -20,7 +20,6 @@ public class SearchBar : Singleton<SearchBar>
         allProducts.Add(product);
     }
 
-
     public void ShowSearchResults()
     {
         if (string.IsNullOrEmpty(input.text))
@@ -29,6 +28,8 @@ public class SearchBar : Singleton<SearchBar>
             {
                 product.gameObject.SetActive(true);
             }
+
+            input.text = string.Empty;
         }
         else
         {
