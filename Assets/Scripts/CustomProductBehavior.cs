@@ -17,7 +17,9 @@ public class CustomProductBehavior : MonoBehaviour
         if (!productName.Equals(string.Empty))
         {
             var newProduct = Instantiate(productPrefab, content);
-            newProduct.GetComponent<ProductBehavior>().SetProductName(productName);
+            var product = newProduct.GetComponent<ProductBehavior>();
+            product.SetProductName(productName);
+            SearchBar.Instance.AddNewProduct(product);
             //customProducts.Add(newProduct); If needed to clear later
         }
 

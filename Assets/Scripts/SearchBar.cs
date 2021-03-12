@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SearchBar : MonoBehaviour
+public class SearchBar : Singleton<SearchBar>
 {
     private List<ProductBehavior> allProducts;
 
     [SerializeField] private InputField input;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         allProducts = new List<ProductBehavior>(FindObjectsOfType<ProductBehavior>());
+    }
+
+    public void AddNewProduct(ProductBehavior product)
+    {
+        allProducts.Add(product);
     }
 
 
@@ -28,7 +34,7 @@ public class SearchBar : MonoBehaviour
         {
             foreach (var product in allProducts)
             {
-                if (!product.ProductName.Contains(input.text))
+                if (!product.ProductName.ToLower().Contains(input.text.ToLower()))
                 {
                     product.gameObject.SetActive(false);
                 }
