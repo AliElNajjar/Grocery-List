@@ -70,11 +70,6 @@ public class ScreenshotShare : MonoBehaviour
 			AndroidJavaObject intentObject = new AndroidJavaObject("android.content.Intent");
 			intentObject.Call<AndroidJavaObject>("setAction", intentClass.GetStatic<string>("ACTION_SEND"));
 
-			//old code which is not allowed in Android 8 or above
-			//create image URI to add it to the intent
-			//AndroidJavaClass uriClass = new AndroidJavaClass ("android.net.Uri");
-			//AndroidJavaObject uriObject = uriClass.CallStatic<AndroidJavaObject> ("parse", "file://" + screenShotPath);
-
 			//create file object of the screenshot captured
 			AndroidJavaObject fileObject = new AndroidJavaObject("java.io.File", screenShotPath);
 
